@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Το Τραγούδι μας | Νηπιαγωγείο</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .emoji-big { font-size: 64px; margin-bottom: 16px; }
+        h1 { font-size: 24px; color: #2d3436; margin-bottom: 8px; }
+        .subtitle { color: #636e72; font-size: 16px; margin-bottom: 28px; line-height: 1.5; }
+        .note-icons { font-size: 28px; letter-spacing: 8px; margin-bottom: 20px; animation: bounce 2s ease infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        audio { width: 100%; margin: 20px 0; border-radius: 12px; height: 44px; }
+        .play-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none; border-radius: 50px;
+            padding: 16px 40px; font-size: 18px; font-weight: 600;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 24px;
+        }
+        .play-btn:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        .play-btn:active { transform: scale(0.98); }
+        .play-btn .play-icon { font-size: 22px; }
+        .divider { border: none; height: 1px; background: #dfe6e9; margin: 24px 0; }
+        .footer-text { color: #b2bec3; font-size: 13px; }
+        .footer-text .heart { color: #e17055; }
+        @media (max-width: 360px) {
+            .card { padding: 30px 20px; }
+            h1 { font-size: 20px; }
+            .emoji-big { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji-big">🎶</div>
+        <h1>Το Τραγούδι μας</h1>
+        <p class="subtitle">Τα μικρά μας ερμήνευσαν το τραγούδι τους! Πατήστε «Αναπαραγωγή» για να το ακούσετε. 🎵</p>
+        <div class="note-icons">🎵🎶🎵</div>
+        <audio id="song" controls preload="metadata">
+            <source src="song.mp3" type="audio/mpeg">
+            <source src="song.ogg" type="audio/ogg">
+            Ο browser σας δεν υποστηρίζει αναπαραγωγή ήχου.
+        </audio>
+        <button class="play-btn" id="playBtn">
+            <span class="play-icon">▶️</span> Αναπαραγωγή
+        </button>
+        <hr class="divider">
+        <p class="footer-text">Φτιαγμένο με 💜 για τους γονείς</p>
+    </div>
+    <script>
+        const audio = document.getElementById('song');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = playBtn.querySelector('.play-icon');
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.textContent = '⏸️';
+                playBtn.childNodes[1].textContent = ' Παύση';
+            } else {
+                audio.pause();
+                playIcon.textContent = '▶️';
+                playBtn.childNodes[1].textContent = ' Αναπαραγωγή';
+            }
+        });
+        audio.addEventListener('ended', () => { playIcon.textContent = '▶️'; playBtn.childNodes[1].textContent = ' Αναπαραγωγή'; });
+        audio.addEventListener('play', () => { playIcon.textContent = '⏸️'; playBtn.childNodes[1].textContent = ' Παύση'; });
+        audio.addEventListener('pause', () => { playIcon.textContent = '▶️'; playBtn.childNodes[1].textContent = ' Αναπαραγωγή'; });
+    </script>
+</body>
+</html>
