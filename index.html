@@ -12,11 +12,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('background.jpg') center/cover no-repeat;
             padding: 20px;
         }
         .card {
-            background: white;
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 24px;
             padding: 40px 30px;
             max-width: 420px;
@@ -54,18 +54,18 @@
 <body>
     <div class="card">
         <div class="emoji-big">🎶</div>
-        <h1>Το Τραγούδι μας</h1>
-        <p class="subtitle">Τα μικρά μας ερμήνευσαν το τραγούδι τους! Πατήστε «Αναπαραγωγή» για να το ακούσετε. 🎵</p>
+        <h1>Γειά σας παιδιά</h1>
+        <p class="subtitle">Τα παιδιά μας ερμήνευσαν το τραγούδι τους! 🎵</p>
         <div class="note-icons">🎵🎶🎵</div>
         <audio id="song" controls preload="metadata">
             <source src="Geia-sas-paidia.mp3" type="audio/mpeg">
-            Ο browser σας δεν υποστηρίζει την αναπαραγωγή ήχου.
+            Ο browser σας δεν υποστηρίζει αναπαραγωγή ήχου.
         </audio>
         <button class="play-btn" id="playBtn">
-            <span class="play-icon">▶️</span> Αναπαραγωγή
+            <span class="play-icon">▶️</span> PLAY
         </button>
         <hr class="divider">
-        <p class="footer-text">Φτιαγμένο με 💜 για τους γονείς</p>
+        <p class="footer-text">Καλή επιτυχία στο δημοτικό 💜 σας ευχόμαστε όλους</p>
     </div>
     <script>
         const audio = document.getElementById('song');
